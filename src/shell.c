@@ -34,9 +34,8 @@ static mrb_value mrb_async_call(mrb_state *mrb, mrb_value self) {
   mrb_value s_in  = mrb_str_new_cstr(mrb, ""); 
   mrb_value s_out = mrb_str_new_cstr(mrb, DEVNULL);
   mrb_value a_result = mrb_ary_new(mrb);
-  mrb_int n_arg = 0;
 
-  n_arg = mrb_get_args(mrb, "S|SS", &s_cmd, &s_in, &s_out);
+  mrb_get_args(mrb, "S|SS", &s_cmd, &s_in, &s_out);
   a_result = mrb_s_fork(mrb, &s_cmd, &s_in, &s_out);
 
   return a_result;
@@ -45,9 +44,8 @@ static mrb_value mrb_async_call(mrb_state *mrb, mrb_value self) {
 static mrb_value mrb_shell_call(mrb_state *mrb, mrb_value self) {
   mrb_value s_cmd;
   mrb_value a_result = mrb_ary_new(mrb);
-  mrb_int n_arg = 0;
 
-  n_arg = mrb_get_args(mrb, "S", &s_cmd);
+  mrb_get_args(mrb, "S", &s_cmd);
   a_result = mrb_s_popen(mrb, &s_cmd);
 
   return a_result;
